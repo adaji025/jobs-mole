@@ -1,0 +1,179 @@
+.navContainer {
+    z-index: 1000 !important;
+  }
+  .navbarItems {
+      background: transparent;
+      height: 120px;
+      display: flex;
+      /* justify-content: center; */
+      align-items: center;
+      font: normal normal medium 14px/24px GT Walsheim Pro;
+  
+  }
+  .activeNav {
+    color: var(--mega-law-tomato) !important;
+  }
+  .logo {
+      color: white;
+      font-family: "Poppins", sans-serif;
+      font-weight: bold;
+    }
+    .menuIcon img {
+      min-width: 120% !important;
+    }
+    .mega {
+      font-size: 38px;
+    }
+    .law {
+      font-size: 38px;
+      color: var(--mega-law-tomato);
+    }
+    .partners {
+      letter-spacing: 0.9rem;
+      line-height: 0.4;
+      font-weight: 200 !important;
+    }
+  
+  .menuIcon {
+      display: none;
+  }
+  .nav-menu {
+      display: grid;
+      grid-template-columns: repeat(5, auto);
+      grid-gap: 10px;
+      list-style: none;
+      text-align: center;
+      width: 100vw;
+      justify-content: center;
+      margin-right: 2rem;
+      margin-top: 20px;
+    }
+    
+    .navLink {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      margin-bottom: 1rem;
+      z-index: 100 !important;
+    }
+    .navLink:hover {
+      color: var(--mega-law-tomato);
+    }
+    .nav-link:hover {
+      background-color: #6d76f7;
+      border-radius: 4px;
+      transition: all 0.2s ease-out;
+    }
+    .navLink-mobile {
+      color: #fff;
+      display: none;
+    }
+    .nav-btn {
+      background: var(--mega-law-tomato) !important;
+      border-radius: 0 !important;
+      width: 260px;
+      height: 60px;
+    }
+  
+    .megaLight {
+      color: #fff;
+    }
+    .megaDark {
+      color: var(--mega-law-dark);
+    }
+    .scrollBg {
+      background: var(--mega-law-ash) !important;
+      position: fixed;
+      min-width: 100vw;
+      z-index: 5;
+      padding: 1.5rem 4rem;
+      transition: all .3 ease;
+    }
+    .scrollColor {
+      color: var(--mega-law-dark);
+    }
+  @media (max-width: 992px) {
+      .navbarItems {
+          height: 120px;
+          position: relative;
+      }
+  
+      .menuIcon {
+          display: inline-block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          margin-top: 40px;
+          transform: translate(-10%, 30%);
+          cursor: pointer;
+          z-index: 10;
+      }
+      .nav-menu {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          /* min-height: 100vh; */
+          position: absolute;
+          top: 100px;
+          left: -120%;
+          opacity: 1;
+          transition: all 0.5s ease;
+        }
+        .nav-menu.active {
+          background: var(--mega-law-ash);
+          left: 0;
+          opacity: 1;
+          z-index: 10;
+          padding: 10px;
+          transition: all 0.5s ease;
+        }
+  
+        .navLink {
+          text-align: start;
+          width: 100%;
+          padding: 1.5rem;
+          color: var(--mega-law-dark);
+          display: table;
+          border-bottom: 1px solid rgb(209, 202, 202);
+          /* margin-left: -20px; */
+        }
+      ul {
+        padding-inline-start: 0px;
+      }
+        .nav-link:hover {
+          background: var(--mega-law-tomato);
+          border-radius: 0;
+        }
+        
+        #__next > div > div.Services_services__ti_Ua > div > nav > button,
+        #__next > div > section.Home_heroContainer__jUoc_ > div > nav > button,
+        #__next > div > div.About_aboutHero__esVz6 > div > nav > button,
+        #__next > div > div:nth-child(1) > nav > button {
+          display: none;
+        }
+  }
+  
+  @media (max-width: 576px) {
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      min-height: 100vh;
+      overflow: auto;
+      position: absolute;
+      top: 80px;
+      left: -100%;
+      opacity: 1;
+      transition: all 0.5s ease;
+      z-index: 100 !important;
+    }
+    .navLink-mobile {
+      display: block;
+      text-align: center;
+      width: 100%;
+      margin-top: 1rem;
+      padding: 2rem;
+      color: white;
+      background: var(--mega-law-tomato);
+    }
+  }
