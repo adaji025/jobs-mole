@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 import { navMenuItems } from "./NavItems";
@@ -8,9 +8,25 @@ import { useRouter } from "next/router";
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
   const router = useRouter();
+  const [scrollBg, setScrollBg] = useState(false)
+
+  const changeBg = () => {
+    if (window.scrollY >= 20) {
+      setScrollBg(true);
+    }else {
+      setScrollBg(false)
+    }
+  };
+
+    
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", changeBg);
+    }
+ 
+  
 
   return (
-    <div className={styles.navContainer}>
+    <div className={`${styles.navContainer} ${scrollBg ? 'bg-primary-light' : ''}`}>
       <nav className={styles.navbarItems}>
         <div className={styles.logo}>
           <h1 className="text-2xl font-bold pl-2 ">JobsMole</h1>
@@ -26,9 +42,16 @@ const Navbar = () => {
             menu ? styles.nav_menu + " " + styles.active : styles.nav_menu
           }`}
         >
-          {navMenuItems.map((menu) => (
-            <span className="block p-2 font-semibold text-base md:text-xl text-primary-dark cursor-pointer hover:text-primary-blue transition-all duration-200 "
-            onClick={() => router.push(menu.url)}>
+          {navMenuItems.map((menu, idx) => (
+            <span
+            key={idx}
+              className={`block p-2 font-semibold text-base md:text-xl  cursor-pointer hover:text-primary-blue transition-all duration-200 ${
+                router.pathname === menu.url
+                  ? "text-primary-blue"
+                  : "text-primary-dark"
+              }`}
+              onClick={() => router.push(menu.url)}
+            >
               {menu.title}
             </span>
           ))}
