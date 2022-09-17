@@ -12,6 +12,9 @@ module.exports = {
           light: "#F6F7FC",
           dark: '#2B2A37'
         }
+      },
+      flex: {
+        '2': '2 2 0%'
       }
     },
   },
