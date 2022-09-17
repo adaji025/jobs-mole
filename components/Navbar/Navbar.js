@@ -1,123 +1,44 @@
-import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import React, { useState } from "react";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+
+import { navMenuItems } from "./NavItems";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
-  const [clicked, setClicked] = useState(false);
-  const [navBg, setNavBg] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleClick = () => {
-    setClicked(!clicked);
-  };
-
-  const router = useRouter();
-
-  const STYLES = ["megaLight", "megaDark"];
-
-  const checkColor = STYLES.includes(textColor) ? textColor : STYLES[0];
-
-  const changeBg = () => {
-    // console.log(window.scrollY);
-    if (window.scrollY >= 400) {
-      setNavBg(true);
-    } else {
-      setNavBg(false);
-    }
-  };
-
-  if (typeof window !== "undefined") {
-    window.addEventListener("scroll", changeBg);
-  }
-
+  const [menu, setMenu] = useState(false);
   return (
-    <div className="navContainer">
-      <nav
-        className={
-          `${navBg ?  styles.navbarItems + ' ' + styles.scrollBg  : styles.navbarItems}`
-        }
-      >
-        <div className={` logo pb-2 `} onClick={() => router.push("/")}>
-          <span
-            className={
-              navBg ? `scrollColor ${checkColor} mega` : ` ${checkColor} mega`
-            }
-          >
-            Mega
-          </span>
-          <span className={` law `}>Law</span>
-          <span
-            className={
-              navBg
-                ? `scrollColor d-block partners ${checkColor}`
-                : ` d-block partners ${checkColor}`
-            }
-          >
-            Partners
-          </span>
+    <div className={styles.navContainer}>
+      <nav className={styles.navbarItems}>
+        <div className={styles.logo}>
+          <h1 className="text-2xl font-bold pl-2 ">JobsMole</h1>
         </div>
-        <div className={`px-1 px-sm-0 menuIcon `} onClick={handleClick}>
-          {clicked ? (
-            <Image
-              width={50}
-              height={10}
-              src="/img/togglerClose.svg"
-              className="img-fluid"
-            />
-          ) : (
-            <Image
-              width={50}
-              height={10}
-              src="/img/togglerOpen.svg"
-              className=""
-            />
-          )}
-        </div>
-        <ul className={clicked ? "nav-menu active" : "nav-menu"}>
-          {MenuItems.map((item, index) => {
-            return (
-              <li key={index}>
-                <Link href={item.url}>
-                  <a
-                    className={
-                      navBg
-                        ? `poppins-medium scrollColor ${checkColor} ${item.cName}`
-                        : `poppins-medium ${checkColor} ${item.cName} ${
-                            router.pathname === item.url && "activeNav"
-                          }`
-                    }
-                    target={item.target}
-                  >
-                    {console.log(router.pathname)}
-                    {item.title}
-                  </a>
-                </Link>
-              </li>
-            );
-          })}
-          <div className="d-sm-none py-5">
-            <Link href="#">
-              <a className="px-3 poppins-medium text-secondary">Instagram</a>
-            </Link>
-            <Link href="#">
-              <a className="px-3 poppins-medium text-secondary">Twitter</a>
-            </Link>
-            <Link href="#">
-              <a className="px-3 poppins-medium text-secondary">Facebook</a>
-            </Link>
-          </div>
-          <div className="d-sm-none text-center">
-            <span className="text-secondary">&copy; 2021 Megalaw Partners</span>
-          </div>
-        </ul>
-        <button
-          className={`btn poppins-medium text-white nav-btn`}
-          onClick={() => setOpenModal(true)}
+        <div
+          className={`cursor-pointer pr-2 ${styles.menuIcon}`}
+          onClick={() => setMenu(!menu)}
         >
-          Contact Us
-        </button>
+          {menu ? <AiOutlineClose size={25} /> : <AiOutlineMenu size={25} />}
+        </div>
+        <div
+          className={` ${
+            menu ? styles.nav_menu + " " + styles.active : styles.nav_menu
+          }`}
+        >
+          {navMenuItems.map((menu) => (
+            <span className="block py-2 font-semibold text-base md:text-xl text-primary-dark cursor-pointer hover:text-primary-blue transition-all duration-200 ">{menu.title}</span>
+          ))}
+          <div className={`lg:hidden flex flex-col justify-center items-center font-semibold text-primary-blue`}>
+            <button className="px-4 py-2 mb-2">login</button>
+            <button className="border border-primary-blue px-6 py-2 rounded-3xl">
+              Register
+            </button>
+          </div>
+        </div>
+        <div className={`hidden lg:flex   space-x-4 pr-2 font-semibold text-primary-blue`}>
+          <button className="px-4 py-2 hover:text-primary-dark transition-all duration-200">login</button>
+          <button className="border text-center border-primary-blue px-6 py-2 rounded-3xl hover:text-primary-dark bg-primary-light transition-all duration-200">
+            Register
+          </button>
+        </div>
       </nav>
     </div>
   );
