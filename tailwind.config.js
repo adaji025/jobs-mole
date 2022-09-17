@@ -15,6 +15,9 @@ module.exports = {
       },
       flex: {
         '2': '2 2 0%'
+      },
+      fontFamily: {
+        inter: 'Inter'
       }
     },
   },
