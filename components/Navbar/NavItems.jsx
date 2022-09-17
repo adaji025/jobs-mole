@@ -3,22 +3,22 @@
 export const navMenuItems = [
     {
         title: 'Home',
-        url: ''
+        url: '/'
     },
     {
         title: 'Find Jobs',
-        url: ''
+        url: '/find-job'
     },
     {
         title: 'Jobs Alert',
-        url: ''
+        url: '/job-alert'
     },
     {
-        title: 'Find Candidate',
-        url: ''
+        title: 'Post Jobs',
+        url: '/post-job'
     },
     {
         title: 'Career Advice',
-        url: ''
+        url: '/career-advice'
     },
 ]
