@@ -6,20 +6,29 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors:{
+      colors: {
         primary: {
-          blue: '#4540DC',
+          blue: "#4540DC",
           light: "#F6F7FC",
-          dark: '#2B2A37'
-        }
+          dark: "#2B2A37",
+        },
       },
       flex: {
-        '2': '2 2 0%'
+        2: "2 2 0%",
       },
       fontFamily: {
-        inter: 'Inter'
-      }
+        inter: "Inter",
+      },
+     
+    },
+    screens: {
+      xs: "420px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
     },
   },
   plugins: [],
-}
+};

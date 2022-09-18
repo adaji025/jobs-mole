@@ -26,7 +26,7 @@ const Navbar = () => {
   
 
   return (
-    <div className={`${styles.navContainer} ${scrollBg ? 'bg-primary-light' : ''}`}>
+    <div className={`${styles.navContainer} ${scrollBg ? 'bg-primary-light shadow-sm' : ''}`}>
       <nav className={styles.navbarItems}>
         <div className={styles.logo}>
           <h1 className="text-2xl font-bold pl-2 ">JobsMole</h1>
